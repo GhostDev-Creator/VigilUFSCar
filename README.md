@@ -45,5 +45,13 @@ Os dados são atualizados **automaticamente** através de um **arquivo público 
 
 ---
 
+## 🖥️ Visualização no Desktop  
+<img src="https://drive.google.com/file/d/16-QxLLKOmylcq2UtuOvfmdMCmyrQeqhw/view?usp=drive_link" width="800">  
+
+## 📱 Visualização no Mobile  
+<img src="https://drive.google.com/uc?id=1McUFjlNO_0xyAJfX345AC5hN26exrC_" width="400">
+
+---
+
 ## 📜 Licença  
 Este projeto está sob **licença proprietária**, permitindo apenas **visualização e consulta pública**, sem permissão para **cópia, modificação ou redistribuição**.  
