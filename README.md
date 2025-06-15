@@ -44,12 +44,11 @@ Os dados são atualizados **automaticamente** através de um **arquivo público 
 3️⃣ **O código-fonte não será disponibilizado para cópia ou modificação**  
 
 ---
+## 🖥️ 📱 Visualização  
 
-## 🖥️ Visualização no Desktop  
-<img src="https://drive.google.com/file/d/16-QxLLKOmylcq2UtuOvfmdMCmyrQeqhw/view?usp=drive_link" width="800">  
-
-## 📱 Visualização no Mobile  
-<img src="https://drive.google.com/uc?id=1McUFjlNO_0xyAJfX345AC5hN26exrC_" width="400">
+| **Desktop WEB** | **Celular WEB** |
+|---|---|
+| <img src="https://drive.google.com/uc?id=16-QxLLKOmylcq2UtuOvfmdMCmyrQeqhw" width="800"> | <img src="https://drive.google.com/uc?id=1McUFjlNO_0xyAJfX345AC5hN26exrC_-" width="200"> |
 
 ---
 
