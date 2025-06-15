@@ -1,7 +1,5 @@
 # 🚀 VigilUFSCar - Monitoramento da Qualidade da Água  
 
-![Banner](https://via.placeholder.com/800x300.png?text=VigilUFSCar)  
-
 ## 📌 Descrição  
 O **VigilUFSCar** é um dashboard web minimalista para **monitoramento da qualidade da água** da barragem da **Universidade Federal de São Carlos (UFSCar)**. Ele permite a **visualização** de indicadores como:  
 
