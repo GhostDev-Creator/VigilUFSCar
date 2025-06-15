@@ -1,41 +1,51 @@
-VigilUFSCar - Monitoramento da Qualidade da Água
-📌 Descrição
-O VigilUFSCar é um dashboard web minimalista para monitoramento da qualidade da água da barragem da Universidade Federal de São Carlos (UFSCar). Ele permite a visualização de indicadores como pH, cor, turbidez, sólidos totais e temperatura, garantindo um acompanhamento eficiente e acessível.
+# 🚀 VigilUFSCar - Monitoramento da Qualidade da Água  
 
-Os dados são atualizados automaticamente através de um arquivo público hospedado no GitHub, onde os registros são armazenados em formato JSON. No entanto, o código-fonte deste projeto não está disponível para cópia ou modificação.
+![Banner](https://via.placeholder.com/800x300.png?text=VigilUFSCar)  
 
-🔒 Termos de Uso
-⚠️ Este projeto é de uso exclusivo para visualização. Nenhuma parte do código-fonte pode ser copiada, modificada ou distribuída sem autorização.
+## 📌 Descrição  
+O **VigilUFSCar** é um dashboard web minimalista para **monitoramento da qualidade da água** da barragem da **Universidade Federal de São Carlos (UFSCar)**. Ele permite a **visualização** de indicadores como:  
 
-✔️ Os usuários podem acessar e visualizar os dados apresentados no dashboard. ❌ Não é permitido copiar, modificar ou redistribuir o código-fonte deste projeto. ❌ Não é permitida a utilização comercial ou acadêmica sem autorização prévia.
+- 💧 **pH**  
+- 🎨 **Cor**  
+- 🌫 **Turbidez**  
+- ⚖ **Sólidos Totais (ST, STV, STF)**  
+- 🌡 **Temperatura**  
 
-🛠 Tecnologias Utilizadas
-HTML – Estrutura da aplicação
+Os dados são atualizados **automaticamente** através de um **arquivo público hospedado no GitHub**, onde os registros são armazenados em **formato JSON**. **O código-fonte deste projeto não está disponível para cópia ou modificação.**  
 
-CSS – Estilos e responsividade
+---
 
-JavaScript – Manipulação de dados e lógica de atualização
+## 🔒 Termos de Uso  
+⚠ **Este projeto é de uso exclusivo para visualização**. Nenhuma parte do código-fonte pode ser **copiada, modificada ou distribuída sem autorização**.  
 
-GitHub API – Integração para consumo dos dados via JSON
+✅ **Os usuários podem acessar e visualizar os dados apresentados no dashboard**.  
+❌ **Não é permitido copiar, modificar ou redistribuir o código-fonte deste projeto**.  
+❌ **Não é permitida a utilização comercial ou acadêmica sem autorização prévia**.  
 
-🚀 Funcionalidades
-✅ Visualização intuitiva dos parâmetros da qualidade da água ✅ Dados atualizados automaticamente via JSON hospedado no GitHub ✅ Interface minimalista baseada em tabelas e cards simples ✅ Suporte para atualizações periódicas sem necessidade de intervenção manual
+---
 
-🔧 Como Acessar
-Acesse o dashboard no seguinte link: [INSIRA SEU LINK AQUI]
+## 🛠 Tecnologias Utilizadas  
+✔ **HTML** – Estrutura da aplicação  
+✔ **CSS** – Estilos e responsividade  
+✔ **JavaScript** – Manipulação de dados e lógica de atualização  
+✔ **GitHub API** – Integração para consumo dos dados via JSON  
 
-Os dados serão carregados automaticamente a partir do JSON público no GitHub
+---
 
-O código-fonte não será disponibilizado para cópia ou modificação
+## 🚀 Funcionalidades  
+✅ **Visualização intuitiva** dos parâmetros da qualidade da água  
+✅ **Dados atualizados automaticamente** via JSON hospedado no GitHub  
+✅ **Interface minimalista** baseada em tabelas e cards simples  
+✅ **Suporte para atualizações periódicas** sem necessidade de intervenção manual  
 
-🏷 Proteção da Marca e Identidade
-Caso o projeto tenha um nome ou identidade visual própria, recomenda-se registrá-lo para evitar uso indevido por terceiros. Algumas formas de proteção incluem:
+---
 
-Registro de marca no INPI (Instituto Nacional da Propriedade Industrial).
+## 🔧 Como Acessar  
+1️⃣ **Acesse o dashboard:** [INSIRA SEU LINK AQUI]  
+2️⃣ **Os dados serão carregados automaticamente** a partir do JSON público no GitHub  
+3️⃣ **O código-fonte não será disponibilizado para cópia ou modificação**  
 
-Uso de direitos autorais para proteger elementos visuais do projeto.
+---
 
-Licença personalizada para reforçar a proibição de cópia do código-fonte.
-
-📜 Licença
-Este projeto está sob licença proprietária, permitindo apenas visualização e consulta pública, sem permissão para cópia, modificação ou redistribuição.
+## 📜 Licença  
+Este projeto está sob **licença proprietária**, permitindo apenas **visualização e consulta pública**, sem permissão para **cópia, modificação ou redistribuição**.  
