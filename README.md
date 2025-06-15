@@ -39,8 +39,8 @@ Os dados são atualizados **automaticamente** através de um **arquivo público 
 ---
 
 ## 🔧 Como Acessar  
-2️⃣ **Os dados serão carregados automaticamente** a partir do JSON público no GitHub  
-3️⃣ **O código-fonte não será disponibilizado para cópia ou modificação**  
+**Os dados serão carregados automaticamente** a partir do JSON público no GitHub  
+**O código-fonte não será disponibilizado para cópia ou modificação**  
 
 ---
 ## 🖥️ 📱 Visualização  
