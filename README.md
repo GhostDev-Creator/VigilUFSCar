@@ -37,12 +37,6 @@ Os dados são atualizados **automaticamente** através de um **arquivo público 
 ✅ **Suporte para atualizações periódicas** sem necessidade de intervenção manual  
 
 ---
-
-## 🔧 Como Acessar  
-**Os dados serão carregados automaticamente** a partir do JSON público no GitHub  
-**O código-fonte não será disponibilizado para cópia ou modificação**  
-
----
 ## 🖥️ 📱 Visualização  
 
 | **Desktop WEB** | **Celular WEB** |
