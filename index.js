@@ -1,7 +1,6 @@
 const sideMenu = document.querySelector('aside');
 const menuBtn = document.getElementById('menu-btn');
 const closeBtn = document.getElementById('close-btn');
-
 const darkMode = document.querySelector('.dark-mode');
 
 menuBtn.addEventListener('click', () => {
@@ -16,21 +15,21 @@ darkMode.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode-variables');
     darkMode.querySelector('span:nth-child(1)').classList.toggle('active');
     darkMode.querySelector('span:nth-child(2)').classList.toggle('active');
-})
+});
 
 const maxInitialRows = 5;
-  const tbody = document.querySelector('.recent-orders table tbody');
-  const toggleLink = document.querySelector('.recent-orders a');
-  let allOrders = [];
-  let showingAll = false;
+const tbody = document.querySelector('.recent-orders table tbody');
+const toggleLink = document.querySelector('.recent-orders a');
+let allOrders = [];
+let showingAll = false;
 
-  function renderOrders(data, limit = null) {
+function renderOrders(data, limit = null) {
     tbody.innerHTML = '';
     const rowsToShow = limit ? data.slice(0, limit) : data;
 
     rowsToShow.forEach(order => {
-      const tr = document.createElement('tr');
-      tr.innerHTML = `
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
         <td>${order.date}</td>
         <td>${order.ph}</td>
         <td>
@@ -70,27 +69,37 @@ const maxInitialRows = 5;
           </span>
         </td>
       `;
-      tbody.appendChild(tr);
+        tbody.appendChild(tr);
     });
-  }
+}
 
-  fetch('https://raw.githubusercontent.com/GhostDev-Creator/Dados/refs/heads/main/agua.json')
+fetch('https://raw.githubusercontent.com/GhostDev-Creator/Dados/refs/heads/main/agua.json')
     .then(response => response.json())
     .then(data => {
-      allOrders = data;
-      renderOrders(allOrders, maxInitialRows);
+        allOrders = data;
+        renderOrders(allOrders, maxInitialRows);
+
+        const last = data[data.length - 1];
+
+        document.getElementById('phNow').textContent = last.ph;
+        document.getElementById('turbidezNow').textContent = last.turbidity;
+        document.getElementById('corNow').textContent = last.color;
+
+        document.getElementById('phPercent').textContent = `${((last.ph / 14) * 100).toFixed(2)}%`;
+        document.getElementById('turbidezPercent').textContent = `${((last.turbidity / 100) * 100).toFixed(2)}%`;
+        document.getElementById('corPercent').textContent = `${((last.color / 720) * 100).toFixed(2)}%`;
     })
     .catch(error => console.error('Erro ao carregar os dados:', error));
 
-  toggleLink.addEventListener('click', event => {
+toggleLink.addEventListener('click', event => {
     event.preventDefault();
     if (showingAll) {
-      renderOrders(allOrders, maxInitialRows);
-      toggleLink.textContent = 'Mostrar Tudo';
-      showingAll = false;
+        renderOrders(allOrders, maxInitialRows);
+        toggleLink.textContent = 'Mostrar Tudo';
+        showingAll = false;
     } else {
-      renderOrders(allOrders);
-      toggleLink.textContent = 'Mostrar Menos';
-      showingAll = true;
+        renderOrders(allOrders);
+        toggleLink.textContent = 'Mostrar Menos';
+        showingAll = true;
     }
-  });
+});

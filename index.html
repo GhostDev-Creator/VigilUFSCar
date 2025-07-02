@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -40,57 +40,57 @@
 
         <main>
             <h1>Dados da Qualidade da Água</h1>
-            <!-- Analyses -->
-            <div class="analyse">
-                <div class="sales">
-                    <div class="status">
-                        <div class="info">
-                            <h3>pH</h3>
-                            <h1>6</h1>
+                <div class="analyse">
+                    <div class="sales">
+                        <div class="status">
+                            <div class="info">
+                                <h3>pH</h3>
+                                <h1 id="phNow">--</h1>
+                            </div>
+                            <div class="progresss">
+                                <svg>
+                                    <circle cx="38" cy="38" r="36"></circle>
+                                </svg>
+                                <div class="percentage">
+                                    <p id="phPercent">--%</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="progresss">
-                            <svg>
-                                <circle cx="38" cy="38" r="36"></circle>
-                            </svg>
-                            <div class="percentage">
-                                <p>42.86%</p>
+                    </div>
+                    <div class="visits">
+                        <div class="status">
+                            <div class="info">
+                                <h3>Turbidez</h3>
+                                <h1 id="turbidezNow">--</h1>
+                            </div>
+                            <div class="progresss">
+                                <svg>
+                                    <circle cx="38" cy="38" r="36"></circle>
+                                </svg>
+                                <div class="percentage">
+                                    <p id="turbidezPercent">--%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="searches">
+                        <div class="status">
+                            <div class="info">
+                                <h3>Cor</h3>
+                                <h1 id="corNow">--</h1>
+                            </div>
+                            <div class="progresss">
+                                <svg>
+                                    <circle cx="38" cy="38" r="36"></circle>
+                                </svg>
+                                <div class="percentage">
+                                    <p id="corPercent">--%</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="visits">
-                    <div class="status">
-                        <div class="info">
-                            <h3>Turbidez</h3>
-                            <h1>54</h1>
-                        </div>
-                        <div class="progresss">
-                            <svg>
-                                <circle cx="38" cy="38" r="36"></circle>
-                            </svg>
-                            <div class="percentage">
-                                <p>20%</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="searches">
-                    <div class="status">
-                        <div class="info">
-                            <h3>Cor</h3>
-                            <h1>504</h1>
-                        </div>
-                        <div class="progresss">
-                            <svg>
-                                <circle cx="38" cy="38" r="36"></circle>
-                            </svg>
-                            <div class="percentage">
-                                <p>70%</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
 
             <div class="recent-orders">
                 <h2>Relatórios Detalhados</h2>
@@ -158,5 +158,4 @@
     <script src="orders.js"></script>
     <script src="index.js"></script>
 </body>
-
 </html>
