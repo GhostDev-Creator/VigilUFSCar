@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <link rel="stylesheet" href="dash.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>VigilUFSCar</title>
 </head>
 
@@ -40,76 +41,54 @@
 
         <main>
             <h1>Dados Climáticos</h1>
-            <div class="analyse">
-                <div class="sales">
-                    <div class="status">
-                        <div class="info">
-                            <h3>Temperatura</h3>
-                            <h1>26.1 °C</h1>
+                <div class="analyse">
+                    <div class="sales">
+                        <div class="status">
+                            <div class="info">
+                                <h3>Temperatura</h3>
+                                <h1 id="currentTemp">-- °C</h1> </div>
+                            <div class="progresss">
+                                <svg>
+                                    <circle cx="38" cy="38" r="36"></circle>
+                                </svg>
+                                <div class="percentage">
+                                    <p id="tempPercentage">--%</p> </div>
+                            </div>
                         </div>
-                        <div class="progresss">
-                            <svg>
-                                <circle cx="38" cy="38" r="36"></circle>
-                            </svg>
-                            <div class="percentage">
-                                <p>65.25%</p>
+                    </div>
+                    <div class="visits">
+                        <div class="status">
+                            <div class="info">
+                                <h3>Umidade</h3>
+                                <h1 id="currentHumidity">--%</h1> </div>
+                            <div class="progresss">
+                                <svg>
+                                    <circle cx="38" cy="38" r="36"></circle>
+                                </svg>
+                                <div class="percentage">
+                                    <p id="humidityPercentage">--%</p> </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="searches">
+                        <div class="status">
+                            <div class="info">
+                                <h3>Velocidade do Vento</h3>
+                                <h1 id="currentWindSpeed">-- m/s</h1> </div>
+                            <div class="progresss">
+                                <svg>
+                                    <circle cx="38" cy="38" r="36"></circle>
+                                </svg>
+                                <div class="percentage">
+                                    <p id="windSpeedPercentage">--%</p> </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="visits">
-                    <div class="status">
-                        <div class="info">
-                            <h3>Umidade</h3>
-                            <h1>49%</h1>
-                        </div>
-                        <div class="progresss">
-                            <svg>
-                                <circle cx="38" cy="38" r="36"></circle>
-                            </svg>
-                            <div class="percentage">
-                                <p>49%</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="searches">
-                    <div class="status">
-                        <div class="info">
-                            <h3>Velocidade do Vento</h3>
-                            <h1>1.5 m/s</h1>
-                        </div>
-                        <div class="progresss">
-                            <svg>
-                                <circle cx="38" cy="38" r="36"></circle>
-                            </svg>
-                            <div class="percentage">
-                                <p>15.00%</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <div class="recent-orders">
-                <h2>Relatórios Climáticos</h2>
-                    <table>
-                    <thead>
-                        <tr>
-                        <th>Data</th>
-                        <th>Hora (UTC)</th>
-                        <th>Precipitação (mm)</th>
-                        <th>Umidade (%)</th>
-                        <th>Pressão (hPa)</th>
-                        <th>Velocidade do Vento (m/s)</th>
-                        <th>Temp.(°C)</th>
-                        <th>Temp. Máx (°C)</th>
-                        <th>Temp. Mín (°C)</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                    </table>
-                    <a href="#">Mostrar Tudo</a>
+                <h2>Gráfico Climático</h2>
+                <canvas id="phChart" width="900" height="400"></canvas>
             </div>
 
         </main>
@@ -134,8 +113,8 @@
             <div class="user-profile">
                 <div class="logo">
                     <img src="images/inmet.png">
-                    <h2>VigilUFSCar</h2>
-                    <p>Visualização de dados</p>
+                    <h2>INMET</h2>
+                    <p>Estação Meteorológica</p>
                 </div>
             </div>
 
