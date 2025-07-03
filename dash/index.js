@@ -13,25 +13,28 @@ closeBtn.addEventListener('click', () => {
 
 function applySavedTheme() {
     const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        document.body.classList.add('dark-mode-variables');
-        darkMode.querySelector('span:nth-child(1)').classList.add('active');
-        darkMode.querySelector('span:nth-child(2)').classList.remove('active');
-    } else {
-        document.body.classList.remove('dark-mode-variables');
-        darkMode.querySelector('span:nth-child(1)').classList.remove('active');
-        darkMode.querySelector('span:nth-child(2)').classList.add('active');
-    }
+    const isDark = savedTheme === 'dark';
+
+    document.body.classList.toggle('dark-mode-variables', isDark);
+
+    const span1 = darkMode.querySelector('span:nth-child(1)');
+    const span2 = darkMode.querySelector('span:nth-child(2)');
+
+    span1.classList.toggle('active', isDark);
+    span2.classList.toggle('active', !isDark);
 }
 
 applySavedTheme();
 
 darkMode.addEventListener('click', () => {
-    const isDark = document.body.classList.toggle('dark-mode-variables');
-    darkMode.querySelector('span:nth-child(1)').classList.toggle('active');
-    darkMode.querySelector('span:nth-child(2)').classList.toggle('active');
+    const isNowDark = document.body.classList.toggle('dark-mode-variables');
 
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    const span1 = darkMode.querySelector('span:nth-child(1)');
+    const span2 = darkMode.querySelector('span:nth-child(2)');
+    span1.classList.toggle('active', isNowDark);
+    span2.classList.toggle('active', !isNowDark);
+
+    localStorage.setItem('theme', isNowDark ? 'dark' : 'light');
 });
 
 function parseDate(d) {
