@@ -113,6 +113,7 @@ fetch(url)
             },
             options: {
                 responsive: true,
+                maintainAspectRatio: false,
                 interaction: {
                     mode: 'nearest',
                     intersect: false
