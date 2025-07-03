@@ -13,25 +13,28 @@ closeBtn.addEventListener('click', () => {
 
 function applySavedTheme() {
     const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        document.body.classList.add('dark-mode-variables');
-        darkMode.querySelector('span:nth-child(1)').classList.add('active');
-        darkMode.querySelector('span:nth-child(2)').classList.remove('active');
-    } else {
-        document.body.classList.remove('dark-mode-variables');
-        darkMode.querySelector('span:nth-child(1)').classList.remove('active');
-        darkMode.querySelector('span:nth-child(2)').classList.add('active');
-    }
+    const isDark = savedTheme === 'dark';
+
+    document.body.classList.toggle('dark-mode-variables', isDark);
+
+    const span1 = darkMode.querySelector('span:nth-child(1)');
+    const span2 = darkMode.querySelector('span:nth-child(2)');
+
+    span1.classList.toggle('active', isDark);
+    span2.classList.toggle('active', !isDark);
 }
 
 applySavedTheme();
 
 darkMode.addEventListener('click', () => {
-    const isDark = document.body.classList.toggle('dark-mode-variables');
-    darkMode.querySelector('span:nth-child(1)').classList.toggle('active');
-    darkMode.querySelector('span:nth-child(2)').classList.toggle('active');
+    const isNowDark = document.body.classList.toggle('dark-mode-variables');
 
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    const span1 = darkMode.querySelector('span:nth-child(1)');
+    const span2 = darkMode.querySelector('span:nth-child(2)');
+    span1.classList.toggle('active', isNowDark);
+    span2.classList.toggle('active', !isNowDark);
+
+    localStorage.setItem('theme', isNowDark ? 'dark' : 'light');
 });
 
 const maxInitialRows = 5;
@@ -96,15 +99,19 @@ fetch('https://raw.githubusercontent.com/GhostDev-Creator/Dados/refs/heads/main/
         allOrders = data;
         renderOrders(allOrders, maxInitialRows);
 
-        const last = data[data.length - 1];
+    const last = data[data.length - 1] || {};
 
-        document.getElementById('phNow').textContent = last.ph;
-        document.getElementById('turbidezNow').textContent = last.turbidity;
-        document.getElementById('corNow').textContent = last.color;
+    const lastPh = last.ph ?? '--';
+    const lastTurbidez = last.turbidity ?? '--';
+    const lastCor = last.color ?? '--';
 
-        document.getElementById('phPercent').textContent = `${((last.ph / 14) * 100).toFixed(2)}%`;
-        document.getElementById('turbidezPercent').textContent = `${((last.turbidity / 100) * 100).toFixed(2)}%`;
-        document.getElementById('corPercent').textContent = `${((last.color / 720) * 100).toFixed(2)}%`;
+    document.getElementById('phNow').textContent = `${lastPh}`;
+    document.getElementById('turbidezNow').textContent = `${lastTurbidez} NTU`;
+    document.getElementById('corNow').textContent = `${lastCor} uH`;
+
+    document.getElementById('phPercent').textContent = `${lastPh}`;
+    document.getElementById('turbidezPercent').textContent = `${lastTurbidez} NTU`;
+    document.getElementById('corPercent').textContent = `${lastCor} uH`;
     })
     .catch(error => console.error('Erro ao carregar os dados:', error));
 
