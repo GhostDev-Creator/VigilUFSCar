@@ -11,10 +11,27 @@ closeBtn.addEventListener('click', () => {
     sideMenu.style.display = 'none';
 });
 
+function applySavedTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode-variables');
+        darkMode.querySelector('span:nth-child(1)').classList.add('active');
+        darkMode.querySelector('span:nth-child(2)').classList.remove('active');
+    } else {
+        document.body.classList.remove('dark-mode-variables');
+        darkMode.querySelector('span:nth-child(1)').classList.remove('active');
+        darkMode.querySelector('span:nth-child(2)').classList.add('active');
+    }
+}
+
+applySavedTheme();
+
 darkMode.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode-variables');
+    const isDark = document.body.classList.toggle('dark-mode-variables');
     darkMode.querySelector('span:nth-child(1)').classList.toggle('active');
     darkMode.querySelector('span:nth-child(2)').classList.toggle('active');
+
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
 });
 
 const maxInitialRows = 5;
