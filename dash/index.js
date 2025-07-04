@@ -55,20 +55,18 @@ fetch(url)
         const pressure_hPa = data.map(d => d.pressure_hPa);
 
         const lastIndex = data.length - 1;
-        const lastTemp = data[lastIndex].temperature_now_C || '--';
-        const lastHumidity = data[lastIndex].humidity_percent || '--';
-        const lastWind = data[lastIndex].windSpeed_mps || '--';
+        const lastTemp = data[lastIndex].temperature_now_C ?? '--';
+        const lastHumidity = data[lastIndex].humidity_percent ?? '--';
+        const lastWind = data[lastIndex].windSpeed_mps ?? '--';
 
         document.getElementById('currentTemp').textContent = `${lastTemp} °C`;
         document.getElementById('currentHumidity').textContent = `${lastHumidity}%`;
         document.getElementById('currentWindSpeed').textContent = `${lastWind} m/s`;
 
-        const tempPercent = isNaN(lastTemp) ? '--' : `${Math.round((lastTemp / 40) * 100)} °C`;
-        const windPercent = isNaN(lastWind) ? '--' : `${Math.round((lastWind / 3) * 100)} m/s`;
-
-        document.getElementById('tempPercentage').textContent = tempPercent;
+        document.getElementById('tempPercentage').textContent = `${lastTemp} °C`;
         document.getElementById('humidityPercentage').textContent = `${lastHumidity}%`;
-        document.getElementById('windSpeedPercentage').textContent = windPercent;
+        document.getElementById('windSpeedPercentage').textContent = `${lastWind} m/s`;
+
 
         const ctx = document.getElementById('phChart').getContext('2d');
         new Chart(ctx, {
