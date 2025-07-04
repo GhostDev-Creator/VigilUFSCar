@@ -63,8 +63,8 @@ fetch(url)
         document.getElementById('currentHumidity').textContent = `${lastHumidity}%`;
         document.getElementById('currentWindSpeed').textContent = `${lastWind} m/s`;
 
-        const tempPercent = isNaN(lastTemp) ? '--' : `${Math.round((lastTemp / 40) * 100)}%`;
-        const windPercent = isNaN(lastWind) ? '--' : `${Math.round((lastWind / 3) * 100)}%`;
+        const tempPercent = isNaN(lastTemp) ? '--' : `${Math.round((lastTemp / 40) * 100)} °C`;
+        const windPercent = isNaN(lastWind) ? '--' : `${Math.round((lastWind / 3) * 100)} m/s`;
 
         document.getElementById('tempPercentage').textContent = tempPercent;
         document.getElementById('humidityPercentage').textContent = `${lastHumidity}%`;
