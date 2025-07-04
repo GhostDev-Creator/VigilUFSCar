@@ -42,7 +42,7 @@ function parseDate(d) {
     return new Date(`${year}-${month}-${day}`);
 }
 
-const url = 'https://raw.githubusercontent.com/GhostDev-Creator/Dados/refs/heads/main/chuva.json';
+const url = 'https://raw.githubusercontent.com/user/Dados/refs/heads/main/chuva.json';
 
 fetch(url)
     .then(response => response.json())
@@ -63,12 +63,10 @@ fetch(url)
         document.getElementById('currentHumidity').textContent = `${lastHumidity}%`;
         document.getElementById('currentWindSpeed').textContent = `${lastWind} m/s`;
 
-        const tempPercent = isNaN(lastTemp) ? '--' : `${Math.round((lastTemp / 40) * 100)} °C`;
-        const windPercent = isNaN(lastWind) ? '--' : `${Math.round((lastWind / 3) * 100)} m/s`;
-
-        document.getElementById('tempPercentage').textContent = tempPercent;
-        document.getElementById('humidityPercentage').textContent = `${lastHumidity}%`;
-        document.getElementById('windSpeedPercentage').textContent = windPercent;
+        // Sem fórmulas de conversão — exibe o valor real com unidade
+        document.getElementById('tempPercentage').textContent = isNaN(lastTemp) ? '--' : `${lastTemp} °C`;
+        document.getElementById('humidityPercentage').textContent = isNaN(lastHumidity) ? '--' : `${lastHumidity}%`;
+        document.getElementById('windSpeedPercentage').textContent = isNaN(lastWind) ? '--' : `${lastWind} m/s`;
 
         const ctx = document.getElementById('phChart').getContext('2d');
         new Chart(ctx, {
