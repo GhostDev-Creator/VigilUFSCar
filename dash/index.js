@@ -63,9 +63,12 @@ fetch(url)
         document.getElementById('currentHumidity').textContent = `${lastHumidity}%`;
         document.getElementById('currentWindSpeed').textContent = `${lastWind} m/s`;
 
-        document.getElementById('tempPercentage').textContent = isNaN(lastTemp) ? '--' : `${lastTemp} °C`;
-        document.getElementById('humidityPercentage').textContent = isNaN(lastHumidity) ? '--' : `${lastHumidity}%`;
-        document.getElementById('windSpeedPercentage').textContent = isNaN(lastWind) ? '--' : `${lastWind} m/s`;
+        const tempPercent = isNaN(lastTemp) ? '--' : `${Math.round((lastTemp / 40) * 100)} °C`;
+        const windPercent = isNaN(lastWind) ? '--' : `${Math.round((lastWind / 3) * 100)} m/s`;
+
+        document.getElementById('tempPercentage').textContent = tempPercent;
+        document.getElementById('humidityPercentage').textContent = `${lastHumidity}%`;
+        document.getElementById('windSpeedPercentage').textContent = windPercent;
 
         const ctx = document.getElementById('phChart').getContext('2d');
         new Chart(ctx, {
