@@ -1,7 +1,10 @@
-### 🚀 VigilUFSCar - Monitoramento da Qualidade da Água  
+# 🚀 VigilUFSCar - Monitoramento da Qualidade da Água  
 
-## 📌 Descrição  
-O **VigilUFSCar** é um dashboard web minimalista para **monitoramento da qualidade da água** da barragem da **Universidade Federal de São Carlos (UFSCar)**. Ele permite a **visualização** de indicadores como:  
+## 📚 Sobre o Projeto  
+
+O **VigilUFSCar** é um sistema web desenvolvido como parte de um projeto de **Iniciação Científica (PIBIC-EM/CNPq)** vinculado à **Universidade Federal de São Carlos (UFSCar)**.  
+
+Trata-se de um **dashboard responsivo e minimalista** voltado para o **monitoramento da qualidade da água da barragem da UFSCar**, permitindo a visualização de parâmetros ambientais essenciais, como:  
 
 - 💧 **pH**  
 - 🎨 **Cor**  
@@ -9,41 +12,55 @@ O **VigilUFSCar** é um dashboard web minimalista para **monitoramento da qualid
 - ⚖ **Sólidos Totais (ST, STV, STF)**  
 - 🌡 **Temperatura**  
 
-Os dados são atualizados **automaticamente** através de um **arquivo público hospedado no GitHub**, onde os registros são armazenados em **formato JSON**. **O código-fonte deste projeto não está disponível para cópia ou modificação.**  
+Os dados são atualizados **automaticamente** a partir de um **arquivo público JSON hospedado no GitHub**.  
+
+> 📌 **Este projeto foi inspirado nos estilos e interfaces dos canais [Egator](https://www.youtube.com/watch?v=BOF79TAIkYQ) e [ASMRProg](https://www.youtube.com/watch?v=YJTKlAvbDo4)**, adaptando elementos modernos para visualização ambiental.
 
 ---
 
-## 🔒 Termos de Uso  
-⚠ **Este projeto é de uso exclusivo para visualização**. Nenhuma parte do código-fonte pode ser **copiada, modificada ou distribuída sem autorização**.  
+## 🌐 Acesse o Site  
 
-✅ **Os usuários podem acessar e visualizar os dados apresentados no dashboard**.  
-❌ **Não é permitido copiar, modificar ou redistribuir o código-fonte deste projeto**.  
-❌ **Não é permitida a utilização comercial ou acadêmica sem autorização prévia**.  
+▶️ [**Clique aqui para acessar o VigilUFSCar**](https://ghostdev-creator.github.io/VigilUFSCar/index.html)  
 
 ---
 
 ## 🛠 Tecnologias Utilizadas  
-✔ **HTML** – Estrutura da aplicação  
-✔ **CSS** – Estilos e responsividade  
-✔ **JavaScript** – Manipulação de dados e lógica de atualização  
-✔ **GitHub API** – Integração para consumo dos dados via JSON  
+
+- ✔ **HTML** – Estrutura da aplicação  
+- ✔ **CSS** – Estilos, responsividade e temas (claro/escuro)  
+- ✔ **JavaScript** – Manipulação de dados e integração dinâmica  
+- ✔ **Chart.js** – Visualização gráfica dos parâmetros  
+- ✔ **GitHub API** – Fonte dos dados ambientais em tempo real  
 
 ---
 
-## 🚀 Funcionalidades  
-✅ **Visualização intuitiva** dos parâmetros da qualidade da água  
-✅ **Dados atualizados automaticamente** via JSON hospedado no GitHub  
-✅ **Interface minimalista** baseada em tabelas e cards simples  
-✅ **Suporte para atualizações periódicas** sem necessidade de intervenção manual  
+## 🔍 Funcionalidades  
+
+- ✅ Interface leve e minimalista com foco na usabilidade  
+- ✅ Gráficos responsivos otimizados para desktop e mobile  
+- ✅ Dados climáticos atualizados automaticamente  
+- ✅ Alternância entre temas claro e escuro com persistência  
 
 ---
-## 🖥️ 📱 Visualização  
 
-| **Desktop WEB** | **Celular WEB** |
+## 🖼️ Visualização  
+
+| **Desktop WEB** | **Mobile WEB** |
 |---|---|
 | <img src="https://drive.google.com/uc?id=16-QxLLKOmylcq2UtuOvfmdMCmyrQeqhw" width="800"> | <img src="https://drive.google.com/uc?id=1McUFjlNO_0xyAJfX345AC5hN26exrC_-" width="200"> |
 
 ---
 
+## 🔒 Termos de Uso  
+
+⚠️ Este é um projeto **exclusivo para fins acadêmicos e de visualização pública**.  
+
+- ✅ **Visualização livre** dos dados no site  
+- ❌ **Não é permitido copiar, modificar ou redistribuir o código-fonte**  
+- ❌ **Não é permitida a utilização comercial ou acadêmica sem autorização**  
+
+---
+
 ## 📜 Licença  
-Este projeto está sob **licença proprietária**, permitindo apenas **visualização e consulta pública**, sem permissão para **cópia, modificação ou redistribuição**.  
+
+Este projeto está sob **licença proprietária**, permitindo apenas **acesso público para fins de visualização**, **vedada a cópia ou reutilização do código-fonte** sem permissão expressa.
