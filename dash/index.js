@@ -63,7 +63,6 @@ fetch(url)
         document.getElementById('currentHumidity').textContent = `${lastHumidity}%`;
         document.getElementById('currentWindSpeed').textContent = `${lastWind} m/s`;
 
-        // Sem fórmulas de conversão — exibe o valor real com unidade
         document.getElementById('tempPercentage').textContent = isNaN(lastTemp) ? '--' : `${lastTemp} °C`;
         document.getElementById('humidityPercentage').textContent = isNaN(lastHumidity) ? '--' : `${lastHumidity}%`;
         document.getElementById('windSpeedPercentage').textContent = isNaN(lastWind) ? '--' : `${lastWind} m/s`;
