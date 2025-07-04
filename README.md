@@ -20,7 +20,7 @@ Os dados são atualizados **automaticamente** a partir de um **arquivo público 
 
 ## 🌐 Acesse o Site  
 
-▶️ [**Clique aqui para acessar o VigilUFSCar**](https://ghostdev-creator.github.io/VigilUFSCar/index.html)  
+▶️ [**Clique aqui para acessar o VigilUFSCar**](https://ghostdev-creator.github.io/VigilUFSCar/)  
 
 ---
 
