@@ -42,7 +42,7 @@ function parseDate(d) {
     return new Date(`${year}-${month}-${day}`);
 }
 
-const url = 'https://raw.githubusercontent.com/user/Dados/refs/heads/main/chuva.json';
+const url = 'https://raw.githubusercontent.com/GhostDev-Creator/Dados/refs/heads/main/chuva.json';
 
 fetch(url)
     .then(response => response.json())
