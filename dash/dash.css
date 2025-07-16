@@ -294,12 +294,12 @@ main .analyse .sales svg circle {
 }
 
 main .analyse .visits svg circle {
-  stroke: var(--color-danger);
+  stroke: rgba(54, 162, 235, 1);
   stroke-dashoffset: 226 * (1 - 0.46);
 }
 
 main .analyse .searches svg circle {
-  stroke: var(--color-primary);
+  stroke: rgb(54, 235, 81);
   stroke-dashoffset: 226 * (1 - 0.496);
 }
 
