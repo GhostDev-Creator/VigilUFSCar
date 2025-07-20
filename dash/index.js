@@ -176,7 +176,6 @@ fetch(url)
     .catch(error => {
         console.error('Erro ao carregar dados climáticos:', error);
     });
-// Parse da data
 function parseDate(d) {
   const [day, month, year] = d.split('/');
   return new Date(`${year}-${month}-${day}`);
