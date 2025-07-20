@@ -684,3 +684,15 @@ main .recent-orders a{
     }
 
 }
+
+.chart-container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+}
+
+@media screen and (max-width: 768px) {
+    .chart-container {
+        height: 300px;
+    }
+}
