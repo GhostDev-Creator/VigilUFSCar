@@ -2,161 +2,164 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <title>VigilUFSCar</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <title>VigilUFSCar</title>
 </head>
 
 <body>
+  <div class="container">
+    <aside>
+      <div class="toggle">
+        <div class="logo">
+          <img src="images/logo.png" />
+          <h2>Vigil<span class="danger">UFSCar</span></h2>
+        </div>
+        <div class="close" id="close-btn">
+          <span class="material-icons-sharp">close</span>
+        </div>
+      </div>
 
-    <div class="container">
-        <aside>
-            <div class="toggle">
-                <div class="logo">
-                    <img src="images/logo.png">
-                    <h2>Vigil<span class="danger">UFSCar</span></h2>
-                </div>
-                <div class="close" id="close-btn">
-                    <span class="material-icons-sharp">
-                        close
-                    </span>
-                </div>
+      <div class="sidebar">
+        <a href="dash/dash.html">
+          <span class="material-icons-sharp">dashboard</span>
+          <h3>Dados Climáticos</h3>
+        </a>
+        <a href="#">
+          <span class="material-icons-sharp">insights</span>
+          <h3>Dados da Qualidade</h3>
+        </a>
+        <a href="#">
+          <span class="material-icons-sharp">history</span>
+          <h3>Histórico</h3>
+        </a>
+        <a href="#">
+          <span class="material-icons-sharp">science</span>
+          <h3>Parâmetros Monitorados</h3>
+        </a>
+      </div>
+    </aside>
+    
+    <main>
+      <h1>Dados da Qualidade da Água</h1>
+      <div class="analyse">
+        <div class="sales">
+          <div class="status">
+            <div class="info">
+              <h3>pH</h3>
+              <h1 id="phNow">--</h1>
             </div>
-
-            <div class="sidebar">
-                <a href="dash/dash.html">
-        <span class="material-icons-sharp">dashboard</span>
-        <h3>Dados Climáticos</h3>
-    </a>
-    <a href="">
-        <span class="material-icons-sharp">insights</span>
-        <h3>Dados da Qualidade</h3>
-    </a>
-    <a>
-    </a>
-        </aside>
-
-        <main>
-            <h1>Dados da Qualidade da Água</h1>
-                <div class="analyse">
-                    <div class="sales">
-                        <div class="status">
-                            <div class="info">
-                                <h3>pH</h3>
-                                <h1 id="phNow">--</h1>
-                            </div>
-                            <div class="progresss">
-                                <svg>
-                                    <circle cx="38" cy="38" r="36"></circle>
-                                </svg>
-                                <div class="percentage">
-                                    <p id="phPercent">--%</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="visits">
-                        <div class="status">
-                            <div class="info">
-                                <h3>Turbidez</h3>
-                                <h1 id="turbidezNow">--</h1>
-                            </div>
-                            <div class="progresss">
-                                <svg>
-                                    <circle cx="38" cy="38" r="36"></circle>
-                                </svg>
-                                <div class="percentage">
-                                    <p id="turbidezPercent">--%</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="searches">
-                        <div class="status">
-                            <div class="info">
-                                <h3>Cor</h3>
-                                <h1 id="corNow">--</h1>
-                            </div>
-                            <div class="progresss">
-                                <svg>
-                                    <circle cx="38" cy="38" r="36"></circle>
-                                </svg>
-                                <div class="percentage">
-                                    <p id="corPercent">--%</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-            <div class="recent-orders">
-                <h2>Relatórios Detalhados</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Data</th>
-                            <th>pH</th>
-                            <th>Cor</th>
-                            <th>Turbidez</th>
-                            <th>ST</th>
-                            <th>STV</th>
-                            <th>STF</th>
-                            <th>Temperatura</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-                <a href="#">Mostrar Tudo</a>
+            <div class="progresss">
+              <svg><circle cx="38" cy="38" r="36"></circle></svg>
+              <div class="percentage"><p id="phPercent">--%</p></div>
             </div>
-        </main>
+          </div>
+        </div>
 
-        <div class="right-section">
-            <div class="nav">
-                <button id="menu-btn">
-                    <span class="material-icons-sharp">
-                        menu
-                    </span>
-                </button>
-                <div class="dark-mode">
-                    <span class="material-icons-sharp">
-                        dark_mode
-                    </span>
-
-                    <span class="material-icons-sharp active">
-                        light_mode
-                    </span>
-                </div>
+        <div class="visits">
+          <div class="status">
+            <div class="info">
+              <h3>Turbidez</h3>
+              <h1 id="turbidezNow">--</h1>
             </div>
-
-            <div class="user-profile">
-                <div class="logo">
-                    <img src="images/logo.png">
-                    <h2>VigilUFSCar</h2>
-                    <p>Visualização de dados</p>
-                </div>
+            <div class="progresss">
+              <svg><circle cx="38" cy="38" r="36"></circle></svg>
+              <div class="percentage"><p id="turbidezPercent">--%</p></div>
             </div>
+          </div>
+        </div>
 
-            <div class="right-section">
-              <div class="map-container">
-                <div class="header">
-                  <h2>Local Da Coleta</h2>
-                </div>
-                <div id="map">
-                  <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d1674.0016287549386!2d-47.88241246118265!3d-21.985853862429583!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1smaps!5e1!3m2!1spt-BR!2sbr!4v1749170152497!5m2!1spt-BR!2sbr" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
-                  </iframe>
-                </div>
-              </div>
+        <div class="searches">
+          <div class="status">
+            <div class="info">
+              <h3>Cor</h3>
+              <h1 id="corNow">--</h1>
             </div>
+            <div class="progresss">
+              <svg><circle cx="38" cy="38" r="36"></circle></svg>
+              <div class="percentage"><p id="corPercent">--%</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="recent-orders">
+        <h2>Gráfico Qualidade da Água</h2>
+        <div class="chart-container">
+          <canvas id="phChart"></canvas>
+        </div>
+      </div>
+
+      <div class="recent-orders">
+        <h2>Relatórios Detalhados</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>pH</th>
+              <th>Cor</th>
+              <th>Turbidez</th>
+              <th>ST</th>
+              <th>STV</th>
+              <th>STF</th>
+              <th>Temperatura</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <a href="#">Mostrar Tudo</a>
+      </div>
+    </main>
+
+    <div class="right-section">
+      <div class="nav">
+        <button id="menu-btn">
+          <span class="material-icons-sharp">menu</span>
+        </button>
+        <div class="dark-mode">
+          <span class="material-icons-sharp">dark_mode</span>
+          <span class="material-icons-sharp active">light_mode</span>
+        </div>
+      </div>
+
+      <div class="user-profile">
+        <div class="logo">
+          <img src="images/logo.png" />
+          <h2>VigilUFSCar</h2>
+          <p>Visualização de dados</p>
+        </div>
+      </div>
+
+      <div class="map-container">
+        <div class="header">
+          <h2>Local Da Coleta</h2>
+        </div>
+        <div id="map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d1674.0016287549386!2d-47.88241246118265!3d-21.985853862429583!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1smaps!5e1!3m2!1spt-BR!2sbr!4v1749170152497!5m2!1spt-BR!2sbr"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+
+      <div class="help-section">
+        <div class="header">
+          <h2>Ajuda</h2>
+        </div>
+        <p>
+          Em caso de dúvidas consulte o manual ou entre em contato com a
+          equipe técnica.
+        </p>
+      </div>
     </div>
+  </div>
 
-    <script src="orders.js"></script>
-    <script src="index.js"></script>
+  <script src="orders.js"></script>
+  <script src="index.js"></script>
 </body>
 </html>
