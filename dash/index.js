@@ -39,7 +39,34 @@ darkMode.addEventListener('click', () => {
 
 function parseDate(d) {
     const [day, month, year] = d.split('/');
-    return new Date(`${year}-${month}-${day}`);
+    const fullYear = parseInt(year.length === 2 ? `20${year}` : year);
+    return new Date(fullYear, parseInt(month) - 1, parseInt(day));
+}
+
+const maxInitialRows = 5;
+const tbody = document.querySelector('.recent-orders table tbody');
+const toggleLink = document.querySelector('.recent-orders a');
+let allData = [];
+let showingAll = false;
+
+function renderOrders(data, limit = null) {
+    tbody.innerHTML = '';
+    const rowsToShow = limit ? data.slice(0, limit) : data;
+
+    rowsToShow.forEach(entry => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td>${entry.date ?? '--'}</td>
+            <td>${entry.timeUTC ?? '--'}</td>
+            <td>${entry.precipitation_mm ?? '--'}</td>
+            <td>${entry.humidity_percent ?? '--'}</td>
+            <td>${entry.pressure_hPa ?? '--'}</td>
+            <td>${entry.windSpeed_mps ?? '--'}</td>
+            <td>${entry.temperature_now_C ?? '--'}</td>
+            <td>${entry.temperature_max_C ?? '--'} / ${entry.temperature_min_C ?? '--'}</td>
+        `;
+        tbody.appendChild(tr);
+    });
 }
 
 const url = 'https://raw.githubusercontent.com/GhostDev-Creator/Dados/refs/heads/main/chuva.json';
@@ -50,23 +77,20 @@ fetch(url)
         data.sort((a, b) => parseDate(a.date) - parseDate(b.date));
 
         const labels = data.map(d => d.date);
-        const windSpeed_mps = data.map(d => d.windSpeed_mps);
-        const humidityValues = data.map(d => d.humidity_percent);
-        const pressure_hPa = data.map(d => d.pressure_hPa);
+        const temperature = data.map(d => d.temperature_now_C);
+        const humidity = data.map(d => d.humidity_percent);
+        const radiation = data.map(d => parseFloat((d.radiation_wm2 ?? 0).toString().replace(',', '.')));
+        const precipitation = data.map(d => d.precipitation_mm);
 
-        const lastIndex = data.length - 1;
-        const lastTemp = data[lastIndex].temperature_now_C ?? '--';
-        const lastHumidity = data[lastIndex].humidity_percent ?? '--';
-        const lastWind = data[lastIndex].windSpeed_mps ?? '--';
+        const lastEntry = data[data.length - 1] || {};
 
-        document.getElementById('currentTemp').textContent = `${lastTemp} °C`;
-        document.getElementById('currentHumidity').textContent = `${lastHumidity}%`;
-        document.getElementById('currentWindSpeed').textContent = `${lastWind} m/s`;
+        document.getElementById('currentTemp').textContent = `${lastEntry.temperature_now_C ?? '--'} °C`;
+        document.getElementById('currentHumidity').textContent = `${lastEntry.humidity_percent ?? '--'} %`;
+        document.getElementById('currentWindSpeed').textContent = `${lastEntry.windSpeed_mps ?? '--'} m/s`;
 
-        document.getElementById('tempPercentage').textContent = `${lastTemp} °C`;
-        document.getElementById('humidityPercentage').textContent = `${lastHumidity}%`;
-        document.getElementById('windSpeedPercentage').textContent = `${lastWind} m/s`;
-
+        document.getElementById('tempPercentage').textContent = `${lastEntry.temperature_now_C ?? '--'} °C`;
+        document.getElementById('humidityPercentage').textContent = `${lastEntry.humidity_percent ?? '--'} %`;
+        document.getElementById('windSpeedPercentage').textContent = `${lastEntry.windSpeed_mps ?? '--'} m/s`;
 
         const ctx = document.getElementById('phChart').getContext('2d');
         new Chart(ctx, {
@@ -75,19 +99,19 @@ fetch(url)
                 labels: labels,
                 datasets: [
                     {
-                        label: 'Pressão (hPa)',
-                        data: pressure_hPa,
+                        label: 'Temperatura',
+                        data: temperature,
                         borderColor: 'rgba(255, 99, 132, 1)',
                         backgroundColor: 'rgba(255, 99, 132, 0.2)',
                         fill: true,
                         tension: 0.3,
                         pointRadius: 5,
                         borderWidth: 2,
-                        yAxisID: 'yPressure'
+                        yAxisID: 'yTemperature'
                     },
                     {
-                        label: 'Umidade (%)',
-                        data: humidityValues,
+                        label: 'Umidade',
+                        data: humidity,
                         borderColor: 'rgba(54, 162, 235, 1)',
                         backgroundColor: 'rgba(54, 162, 235, 0.2)',
                         fill: true,
@@ -97,15 +121,26 @@ fetch(url)
                         yAxisID: 'yHumidity'
                     },
                     {
-                        label: 'Vento (m/s)',
-                        data: windSpeed_mps,
-                        borderColor: 'rgb(54, 235, 81)',
-                        backgroundColor: 'rgba(54, 235, 60, 0.2)',
+                        label: 'Radiação',
+                        data: radiation,
+                        borderColor: 'rgba(255, 206, 86, 1)',
+                        backgroundColor: 'rgba(255, 206, 86, 0.2)',
                         fill: true,
                         tension: 0.3,
                         pointRadius: 5,
                         borderWidth: 2,
-                        yAxisID: 'yWind'
+                        yAxisID: 'yRadiation'
+                    },
+                    {
+                        label: 'Precipitação',
+                        data: precipitation,
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        fill: true,
+                        tension: 0.3,
+                        pointRadius: 5,
+                        borderWidth: 2,
+                        yAxisID: 'yPrecipitation'
                     }
                 ]
             },
@@ -117,6 +152,28 @@ fetch(url)
                     intersect: false
                 },
                 stacked: false,
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: context => {
+                                const val = context.raw;
+                                if (val === null || val === undefined) return 'Sem dados';
+                                let formattedVal = parseFloat(val).toFixed(2);
+
+                                if (context.dataset.label === 'Temperatura') {
+                                    formattedVal = `${parseFloat(val).toFixed(1)}°C`;
+                                } else if (context.dataset.label === 'Umidade') {
+                                    formattedVal = `${parseFloat(val).toFixed(0)}%`;
+                                } else if (context.dataset.label === 'Radiação') {
+                                    formattedVal = `${parseFloat(val).toFixed(2)} W/m²`;
+                                } else if (context.dataset.label === 'Precipitação') {
+                                    formattedVal = `${parseFloat(val).toFixed(1)} mm`;
+                                }
+                                return `${context.dataset.label}: ${formattedVal}`;
+                            }
+                        }
+                    }
+                },
                 scales: {
                     x: {
                         title: {
@@ -124,49 +181,59 @@ fetch(url)
                             text: 'Data (DD/MM/AAAA)'
                         }
                     },
-                    yPressure: {
+                    yTemperature: {
                         type: 'linear',
-                        display: true,
                         position: 'left',
-                        beginAtZero: false,
                         title: {
                             display: true,
-                            text: 'Pressão (hPa)'
+                            text: 'Temp. (°C)'
                         },
-                        min: 923,
-                        max: 929
+                        min: 20,
+                        max: 40,
+                        ticks: {
+                            callback: value => `${value}°`
+                        }
                     },
                     yHumidity: {
                         type: 'linear',
-                        display: true,
                         position: 'right',
-                        beginAtZero: false,
-                        grid: {
-                            drawOnChartArea: false
-                        },
+                        grid: { drawOnChartArea: false },
                         title: {
                             display: true,
-                            text: 'Umidade (%)'
-                        },
-                        min: 30,
-                        max: 65
-                    },
-                    yWind: {
-                        type: 'linear',
-                        display: true,
-                        position: 'right',
-                        beginAtZero: true,
-                        grid: {
-                            drawOnChartArea: false
-                        },
-                        title: {
-                            display: true,
-                            text: 'Vento (m/s)'
+                            text: 'Umid. (%)'
                         },
                         min: 0,
-                        max: 3,
+                        max: 100,
                         ticks: {
-                            padding: 20
+                            callback: value => `${value}%`
+                        }
+                    },
+                    yRadiation: {
+                        type: 'linear',
+                        position: 'right',
+                        grid: { drawOnChartArea: false },
+                        title: {
+                            display: true,
+                            text: 'Radiação (W/m²)'
+                        },
+                        min: 0,
+                        max: 2500,
+                        ticks: {
+                            callback: value => `${value}`
+                        }
+                    },
+                    yPrecipitation: {
+                        type: 'linear',
+                        position: 'right',
+                        grid: { drawOnChartArea: false },
+                        title: {
+                            display: true,
+                            text: 'Precip. (mm)'
+                        },
+                        min: 0,
+                        max: 50,
+                        ticks: {
+                            callback: value => `${value}`
                         }
                     }
                 }
@@ -176,56 +243,26 @@ fetch(url)
     .catch(error => {
         console.error('Erro ao carregar dados climáticos:', error);
     });
-function parseDate(d) {
-  const [day, month, year] = d.split('/');
-  return new Date(`${year}-${month}-${day}`);
-}
-
-const maxInitialRows = 5;
-const tbody = document.querySelector('.recent-orders table tbody');
-const toggleLink = document.querySelector('.recent-orders a');
-let allData = [];
-let showingAll = false;
-
-function renderOrders(data, limit = null) {
-  tbody.innerHTML = '';
-  const rowsToShow = limit ? data.slice(0, limit) : data;
-
-  rowsToShow.forEach(entry => {
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td>${entry.date}</td>
-      <td>${entry.timeUTC}</td>
-      <td>${entry.precipitation_mm} mm</td>
-      <td>${entry.humidity_percent}%</td>
-      <td>${entry.pressure_hPa} hPa</td>
-      <td>${entry.windSpeed_mps} m/s</td>
-      <td>${entry.temperature_now_C} °C</td>
-      <td>${entry.temperature_max_C} / ${entry.temperature_min_C} °C</td>
-    `;
-    tbody.appendChild(tr);
-  });
-}
 
 fetch('https://raw.githubusercontent.com/GhostDev-Creator/Dados/refs/heads/main/chuva.json')
-  .then(response => response.json())
-  .then(data => {
-    data.sort((a, b) => parseDate(b.date) - parseDate(a.date));
+    .then(response => response.json())
+    .then(data => {
+        data.sort((a, b) => parseDate(b.date) - parseDate(a.date));
 
-    allData = data;
-    renderOrders(allData, maxInitialRows);
-  })
-  .catch(error => console.error('Erro ao carregar os dados meteorológicos:', error));
+        allData = data;
+        renderOrders(allData, maxInitialRows);
+    })
+    .catch(error => console.error('Erro ao carregar os dados meteorológicos para a tabela:', error));
 
 toggleLink.addEventListener('click', event => {
-  event.preventDefault();
-  if (showingAll) {
-    renderOrders(allData, maxInitialRows);
-    toggleLink.textContent = 'Mostrar Tudo';
-    showingAll = false;
-  } else {
-    renderOrders(allData);
-    toggleLink.textContent = 'Mostrar Menos';
-    showingAll = true;
-  }
+    event.preventDefault();
+    if (showingAll) {
+        renderOrders(allData, maxInitialRows);
+        toggleLink.textContent = 'Mostrar Tudo';
+        showingAll = false;
+    } else {
+        renderOrders(allData);
+        toggleLink.textContent = 'Mostrar Menos';
+        showingAll = true;
+    }
 });
