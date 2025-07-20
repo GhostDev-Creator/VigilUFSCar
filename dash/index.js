@@ -176,3 +176,57 @@ fetch(url)
     .catch(error => {
         console.error('Erro ao carregar dados climáticos:', error);
     });
+// Parse da data
+function parseDate(d) {
+  const [day, month, year] = d.split('/');
+  return new Date(`${year}-${month}-${day}`);
+}
+
+const maxInitialRows = 5;
+const tbody = document.querySelector('.recent-orders table tbody');
+const toggleLink = document.querySelector('.recent-orders a');
+let allData = [];
+let showingAll = false;
+
+function renderOrders(data, limit = null) {
+  tbody.innerHTML = '';
+  const rowsToShow = limit ? data.slice(0, limit) : data;
+
+  rowsToShow.forEach(entry => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${entry.date}</td>
+      <td>${entry.timeUTC}</td>
+      <td>${entry.precipitation_mm} mm</td>
+      <td>${entry.humidity_percent}%</td>
+      <td>${entry.pressure_hPa} hPa</td>
+      <td>${entry.windSpeed_mps} m/s</td>
+      <td>${entry.temperature_now_C} °C</td>
+      <td>${entry.temperature_max_C} / ${entry.temperature_min_C} °C</td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+fetch('https://raw.githubusercontent.com/GhostDev-Creator/Dados/refs/heads/main/chuva.json')
+  .then(response => response.json())
+  .then(data => {
+    data.sort((a, b) => parseDate(b.date) - parseDate(a.date));
+
+    allData = data;
+    renderOrders(allData, maxInitialRows);
+  })
+  .catch(error => console.error('Erro ao carregar os dados meteorológicos:', error));
+
+toggleLink.addEventListener('click', event => {
+  event.preventDefault();
+  if (showingAll) {
+    renderOrders(allData, maxInitialRows);
+    toggleLink.textContent = 'Mostrar Tudo';
+    showingAll = false;
+  } else {
+    renderOrders(allData);
+    toggleLink.textContent = 'Mostrar Menos';
+    showingAll = true;
+  }
+});
